@@ -22,7 +22,7 @@ fs.readdir('./commands', (err, files) => {
 })
 
 bot.on('ready', () => {
-	bot.user.setActivity('Team fight Tactics','WATCHING')
+	bot.user.setActivity(`Team fight Tactics | ${bot.guilds.size  + 1225} servers`,'WATCHING')
 })
 
 
