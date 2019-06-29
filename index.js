@@ -43,7 +43,7 @@ bot.on('message', async (msg) => {
 
 bot.on('guildMemberAdd', async (mem) => {
 	const dm = await mem.createDM();
-	dm.send('welcome to the server, if you\'re interested in using me, use the **${config.prefix}help** command to get started!')
+	dm.send(`welcome to the server, if you\'re interested in using me, use the **${config.prefix}help** command to get started!`)
 })
 
 
