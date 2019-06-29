@@ -1,0 +1,14 @@
+{
+  "name": "tft-bot",
+  "version": "1.0.0",
+  "description": "this is a bisdocr bot that gives you stats for the TFT game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MedDaBeast",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
