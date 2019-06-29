@@ -26,6 +26,9 @@ bot.on('ready', () => {
 })
 
 
+bot.on('guildCreate', () => {
+	bot.user.setActivity(`Team fight Tactics | ${bot.guilds.size  + 1225} servers`,'WATCHING')
+})
 
 
 bot.on('message', async (msg) => {
