@@ -16,6 +16,8 @@ module.exports.run = async (bot, msg, args, config) => {
             if(i.effects.length !== 0) {
                 const fDesc = i.desc.replace(/%/g, '').split('@').map(e => (i.effects.map(eff => eff.name).includes(e) ? i.effects.filter(eff => eff.name == e)[0].value : e)).join('');
                 result += ` (${fDesc})`;
+            } else {
+                result += ` (${i.desc})`; 
             }
             return {
                 missing : mItemName,
