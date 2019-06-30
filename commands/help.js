@@ -8,7 +8,7 @@ module.exports.run = async (bot, msg, args, config) => {
     console.log(fields);
     const embed = {
       title: "COMMANDS",
-      description: `to get help for a specific command use **${config.prefix}help [command name]** :`,
+      description: `to get help for a specific command use **${config.prefix}help [command name]** (this bot is still under development and a new feature will be added everyday so stay tuned ♥) :`,
       color: 4886754,
       footer: {
         icon_url: bot.user.avatarURL,
