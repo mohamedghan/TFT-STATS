@@ -12,7 +12,11 @@ module.exports.run = async (bot, msg, args, config) => {
         const avItems = TFT.items.filter(i => i.from.includes(id)).map(i => {
             const mId = i.from.filter(tId => tId != id)[0] || id;
             const mItemName = TFT.items.filter(i2 => i2.id == mId)[0].name;
-            const result = i.name;
+            let result = i.name;
+            if(i.effects.length !== 0) {
+                const fDesc = i.desc.replace(/%/g, '').split('@').map(e => (i.effects.map(eff => eff.name).includes(e) ? i.effects.filter(eff => eff.name == e)[0].value : e)).join('');
+                result += ` (${fDesc})`;
+            }
             return {
                 missing : mItemName,
                 result
