@@ -38,6 +38,8 @@ bot.on('message', async (msg) => {
 	let msgarray = msg.content.split(' ');
 	let cmd = msgarray[0];
 	let args = msgarray.slice(1);
+	
+	if(!msg.content.startsWith(prefix)) return;
 
 	let cmdfile = bot.commands.get(cmd.slice(prefix.length));
 
