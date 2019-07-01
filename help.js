@@ -20,4 +20,8 @@ module.exports = {
         name: `- ${config.prefix}how [__finished item name__ or __finished item abbreviation__]`,
         value: `gives you the ingredients needed to make a finished item. __finished item names and abbreviations can be retreived using **${config.prefix}final** command__`
     },
+    stats : {
+        name: `- ${config.prefix}stats [__champion name__]`,
+        value: `get champion stats in Team Fight Tactics!`
+    }
 }
