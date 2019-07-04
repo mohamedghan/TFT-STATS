@@ -23,5 +23,9 @@ module.exports = {
     stats : {
         name: `- ${config.prefix}stats [__champion name__]`,
         value: `get champion stats in Team Fight Tactics!`
+    },
+    invite : {
+        name: `- ${config.prefix}invite`,
+        value: `i wanna become famous!`
     }
 }
