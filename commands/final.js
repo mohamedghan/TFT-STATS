@@ -6,6 +6,8 @@ module.exports.run = async (bot, msg, args, config) => {
   const fields = fItems.map(item => {
     let name = item.name;
     const i = items.filter(it => it.name.toUpperCase() === item.name.toUpperCase())[0];
+    const iconName = i.icon.split('/')[i.icon.split('/').length - 1].replace('.dds', '').replace('.TFT', '').toLowerCase();
+    const emoji = bot.emojis.filter(emoji => emoji.name === iconName).first();
     if (i.effects.length !== 0) {
       const fDesc = i.desc
         .replace(/%/g, "")
@@ -22,7 +24,7 @@ module.exports.run = async (bot, msg, args, config) => {
     }
 
     return {
-      name,
+      name: emoji + ' ' + name,
       value: item.abrv
     };
   });

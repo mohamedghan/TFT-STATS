@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const items = require('../items');
 const TFT = require('../TFT');
-
 module.exports.run = async (bot, msg, args, config) => {
     const itemName = args.join(' ').toUpperCase();
     const abrvs = Object.keys(items);
@@ -11,22 +10,27 @@ module.exports.run = async (bot, msg, args, config) => {
         const id = TFT.items.filter(i => i.name.toUpperCase() == item.toUpperCase())[0].id;
         const avItems = TFT.items.filter(i => i.from.includes(id)).map(i => {
             const mId = i.from.filter(tId => tId != id)[0] || id;
+            const mItem = TFT.items.filter(i2 => i2.id == mId)[0];
             const mItemName = TFT.items.filter(i2 => i2.id == mId)[0].name;
+            const mIconName = mItem.icon.split('/')[mItem.icon.split('/').length - 1].replace('.dds', '').replace('.TFT', '').toLowerCase();
+            const mEmoji = bot.emojis.filter(emoji => emoji.name === mIconName).first();
             let result = i.name;
+            const rIconName = i.icon.split('/')[i.icon.split('/').length - 1].replace('.dds', '').replace('.TFT', '').toLowerCase();
+            const rEmoji = bot.emojis.filter(emoji => emoji.name === rIconName).first();
             if(i.effects.length !== 0) {
                 const fDesc = i.desc.replace(/%/g, '').split('@').map(e => (i.effects.map(eff => eff.name).includes(e) ? i.effects.filter(eff => eff.name == e)[0].value : e)).join('');
-                result += ` (${fDesc})`;
+                result += `(${fDesc})`;
             } else {
-                result += ` (${i.desc})`; 
+                result += `(${i.desc})`; 
             }
             return {
-                missing : mItemName,
+                missing : mEmoji + ' ' + mItemName + ' = ' + rEmoji,
                 result
             };
         });
 
         const fields = avItems.map(i => ({
-            name: `+ ${i.missing} = `,
+            name: `${i.missing}`,
             value: i.result
         }));
 
