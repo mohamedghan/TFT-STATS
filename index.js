@@ -23,7 +23,7 @@ fs.readdir("./commands", (err, files) => {
 
 bot.on("ready", () => {
   bot.user.setActivity(
-    `Team fight Tactics | ${bot.guilds.size + 1225} servers`,
+    `Team fight Tactics | ?help`,
     "WATCHING"
   );
   dbl.postStats(bot.guilds.size + 1225).then((value) => {
@@ -32,10 +32,10 @@ bot.on("ready", () => {
 });
 
 bot.on("guildCreate", () => {
-  bot.user.setActivity(
-    `Team fight Tactics | ${bot.guilds.size + 1225} servers`,
-    "WATCHING"
-  );
+  // bot.user.setActivity(
+  //   `Team fight Tactics | ${bot.guilds.size + 1225} servers`,
+  //   "WATCHING"
+  // );
   dbl.postStats(bot.guilds.size + 1225).then((value) => {
     console.log(value);
   });
@@ -53,14 +53,6 @@ bot.on("message", async msg => {
   let cmdfile = bot.commands.get(cmd.slice(prefix.length));
 
   if (cmdfile) cmdfile.run(bot, msg, args, config);
-});
-
-bot.on("guildMemberAdd", async mem => {
-  if mem.guild.has('264445053596991498') return;
-  const dm = await mem.createDM();
-  dm.send(
-    "welcome to the server, if you're interested in using me, use the **${config.prefix}help** command to get started!"
-  );
 });
 
 bot.login(process.env.TFT_TOKEN);
